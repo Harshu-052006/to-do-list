@@ -4,7 +4,12 @@ todo=[]
 
 def add():
     print("Add what to do")
-    n=int(input("Enter the number of task:"))
+    try:
+        n=int(input("Enter the number of task:"))
+
+    except:
+        print("Please enter the valid input only numbers")
+        return
     for i in range(n):
         task=input(f"{i+1}. ")
         todo.append(task)
@@ -14,23 +19,34 @@ def add():
 
 
 def dlt():
-    print(todo)
+    if not todo:
+        print("There is nothing to delete")
+        return
+    
+    view()
     print("Choose which number of task to Delete")
-    n=int(input("Enter the number of task:"))
-    del todo[n-1]   
-    print("Deleting Task plz wait")
-    time.sleep(2)
-    print("Task Deleted")
-    print(todo)
+    try:
+        n=int(input("Enter the number of task:"))
+        del todo[n-1]   
+        print("Deleting Task plz wait")
+        time.sleep(2)
+        print("Task Deleted")
+    except ValueError:
+        print("Invalid input! Please enter number.")
+    except IndexError:
+        print("That entered number in not there.")
+    view()
 
 
 def view():
     print("-"*20)
     print("     To Do List")
     print("-"*20)
-    for index,task in enumerate(todo):
-        print(f"{index + 1}.{task}")
+    if not todo:
+        print("   (No task found)")
+    else:
+        for index,task in enumerate(todo):
+            print(f"{index + 1}.{task}")
 
 def good_bye():
     print("Good bye!")
-
