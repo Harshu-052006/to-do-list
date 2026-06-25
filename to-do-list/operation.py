@@ -1,5 +1,3 @@
-import time
-
 todo=[]
 
 def add():
@@ -14,7 +12,6 @@ def add():
         task=input(f"{i+1}. ")
         todo.append(task)
     print("Adding Task plz wait")
-    time.sleep(2)
     print("Added Task Succesfully")
 
 
@@ -29,7 +26,6 @@ def dlt():
         n=int(input("Enter the number of task:"))
         del todo[n-1]   
         print("Deleting Task plz wait")
-        time.sleep(2)
         print("Task Deleted")
     except ValueError:
         print("Invalid input! Please enter number.")
